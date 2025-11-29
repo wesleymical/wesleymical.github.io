@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="description" content="Experiências profissionais de Wesley Mical com sistemas Linx">
+        <title>Experiência Linx | Mago Supremo</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            :root {
+                --primary-color: #00ff88;
+                --primary-dark: #00cc6a;
+                --secondary-color: #00d4ff;
+                --accent-color: #ff00ff;
+                --text-primary: #e0e0e0;
+                --text-secondary: #a0a0a0;
+                --text-neon: #00ff88;
+                --bg-overlay: rgba(10, 10, 25, 0.92);
+                --card-bg: rgba(20, 20, 40, 0.7);
+                --card-border: rgba(0, 255, 136, 0.3);
+                --shadow: 0 0 20px rgba(0, 255, 136, 0.2), 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background: linear-gradient(135deg, var(--bg-overlay), var(--bg-overlay)), url("imagens/galaxy.jpg");
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                color: var(--text-primary);
+                min-height: 100vh;
+                line-height: 1.6;
+                position: relative;
+            }
+
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: 
+                    repeating-linear-gradient(
+                        0deg,
+                        transparent,
+                        transparent 2px,
+                        rgba(0, 255, 136, 0.03) 2px,
+                        rgba(0, 255, 136, 0.03) 4px
+                    );
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2em 1.5em;
+                position: relative;
+                z-index: 2;
+            }
+
+            /* Header/Navigation */
+            .nav-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 3em;
+                padding: 1.5em;
+                background: var(--card-bg);
+                backdrop-filter: blur(10px);
+                border: 2px solid var(--card-border);
+                border-radius: 12px;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-logo {
+                font-family: 'Fira Code', monospace;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                text-decoration: none;
+                text-shadow: 0 0 10px var(--primary-color);
+            }
+
+            .nav-logo::before {
+                content: '< ';
+                color: var(--secondary-color);
+            }
+
+            .nav-logo::after {
+                content: ' />';
+                color: var(--secondary-color);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1.5em;
+            }
+
+            .nav-link {
+                font-family: 'Fira Code', monospace;
+                color: var(--text-secondary);
+                text-decoration: none;
+                padding: 0.5em 1em;
+                border: 1px solid transparent;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+                font-size: 0.9rem;
+            }
+
+            .nav-link:hover, .nav-link.active {
+                color: var(--primary-color);
+                border-color: var(--primary-color);
+                box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            }
+
+            /* Page Title */
+            .page-title {
+                font-family: 'Fira Code', monospace;
+                font-size: clamp(2rem, 5vw, 3rem);
+                font-weight: 700;
+                margin-bottom: 0.5em;
+                color: var(--primary-color);
+                text-shadow: 0 0 10px var(--primary-color);
+                text-align: center;
+            }
+
+            .page-title::before {
+                content: '// ';
+                color: var(--secondary-color);
+            }
+
+            .page-subtitle {
+                font-size: clamp(1rem, 2.5vw, 1.3rem);
+                color: var(--text-secondary);
+                text-align: center;
+                margin-bottom: 3em;
+            }
+
+            /* Experience Cards */
+            .experience-section {
+                margin-bottom: 3em;
+            }
+
+            .section-title {
+                font-family: 'Fira Code', monospace;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--secondary-color);
+                margin-bottom: 1.5em;
+                padding-bottom: 0.5em;
+                border-bottom: 2px solid var(--card-border);
+            }
+
+            .section-title::before {
+                content: '{ ';
+                color: var(--primary-color);
+            }
+
+            .section-title::after {
+                content: ' }';
+                color: var(--primary-color);
+            }
+
+            .experience-card {
+                background: var(--card-bg);
+                backdrop-filter: blur(10px);
+                border: 2px solid var(--card-border);
+                border-radius: 12px;
+                padding: 2em;
+                margin-bottom: 2em;
+                box-shadow: var(--shadow);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .experience-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+                animation: scan 4s infinite;
+            }
+
+            @keyframes scan {
+                0% { left: -100%; }
+                100% { left: 100%; }
+            }
+
+            .experience-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--primary-color);
+                box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+            }
+
+            .card-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 1em;
+                flex-wrap: wrap;
+                gap: 1em;
+            }
+
+            .card-title {
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: var(--text-neon);
+            }
+
+            .card-period {
+                font-family: 'Fira Code', monospace;
+                font-size: 0.9rem;
+                color: var(--text-secondary);
+                padding: 0.3em 0.8em;
+                background: rgba(0, 255, 136, 0.1);
+                border: 1px solid var(--primary-color);
+                border-radius: 6px;
+            }
+
+            .card-description {
+                color: var(--text-secondary);
+                margin-bottom: 1.5em;
+                line-height: 1.8;
+            }
+
+            .tech-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5em;
+                margin-bottom: 1.5em;
+            }
+
+            .tech-tag {
+                font-family: 'Fira Code', monospace;
+                font-size: 0.75rem;
+                padding: 0.4em 0.8em;
+                background: rgba(0, 212, 255, 0.1);
+                border: 1px solid var(--secondary-color);
+                border-radius: 6px;
+                color: var(--secondary-color);
+            }
+
+            .achievements {
+                margin-top: 1.5em;
+            }
+
+            .achievements-title {
+                font-family: 'Fira Code', monospace;
+                font-size: 0.9rem;
+                color: var(--primary-color);
+                margin-bottom: 0.8em;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .achievements-title::before {
+                content: '> ';
+            }
+
+            .achievement-item {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 0.8em;
+                color: var(--text-secondary);
+            }
+
+            .achievement-item::before {
+                content: '✓';
+                color: var(--primary-color);
+                margin-right: 0.8em;
+                font-weight: bold;
+                flex-shrink: 0;
+            }
+
+            /* Code block style */
+            .code-block {
+                background: rgba(0, 0, 0, 0.4);
+                border: 1px solid var(--card-border);
+                border-radius: 8px;
+                padding: 1.5em;
+                margin: 2em 0;
+                font-family: 'Fira Code', monospace;
+                font-size: 0.85rem;
+                color: var(--primary-color);
+                overflow-x: auto;
+            }
+
+            .code-comment {
+                color: var(--text-secondary);
+            }
+
+            /* Footer */
+            footer {
+                margin-top: 4em;
+                padding: 2em 1em;
+                text-align: center;
+                background: rgba(10, 10, 25, 0.8);
+                backdrop-filter: blur(10px);
+                border-top: 2px solid var(--card-border);
+            }
+
+            footer p {
+                font-family: 'Fira Code', monospace;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+                margin: 0.4em 0;
+            }
+
+            footer a {
+                color: var(--primary-color);
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            footer a:hover {
+                text-shadow: 0 0 10px var(--primary-color);
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .nav-header {
+                    flex-direction: column;
+                    gap: 1em;
+                    text-align: center;
+                }
+
+                .nav-links {
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 0.5em;
+                }
+
+                .nav-link {
+                    width: 100%;
+                }
+
+                .card-header {
+                    flex-direction: column;
+                }
+
+                .experience-card {
+                    padding: 1.5em;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .container {
+                    padding: 1em;
+                }
+
+                .page-title {
+                    font-size: 1.8rem;
+                }
+
+                .card-title {
+                    font-size: 1.2rem;
+                }
+
+                .code-block {
+                    font-size: 0.75rem;
+                    padding: 1em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Navigation -->
+            <nav class="nav-header">
+                <a href="index.html" class="nav-logo">Mago Supremo</a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="experiencia.html" class="nav-link active">Experiência</a>
+                </div>
+            </nav>
+
+            <!-- Page Header -->
+            <h1 class="page-title">Experiências com Linx</h1>
+            <p class="page-subtitle">Desenvolvedor na Linx - Soluções em Varejo e Cloud Computing</p>
+
+            <!-- Experience Section -->
+            <section class="experience-section">
+                <h2 class="section-title">Cloud Computing & AWS</h2>
+
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Desenvolvedor Cloud AWS</h3>
+                        <span class="card-period">Linx</span>
+                    </div>
+                    
+                    <p class="card-description">
+                        Atuação no desenvolvimento e manutenção de sistemas em cloud computing, 
+                        com foco em arquitetura serverless e integração de serviços AWS para soluções de varejo.
+                    </p>
+
+                    <div class="tech-list">
+                        <span class="tech-tag">AWS EC2</span>
+                        <span class="tech-tag">AWS S3</span>
+                        <span class="tech-tag">AWS Lambda</span>
+                        <span class="tech-tag">AWS SQS</span>
+                        <span class="tech-tag">AWS IAM</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Node.js</span>
+                    </div>
+
+                    <div class="achievements">
+                        <p class="achievements-title">Principais Realizações:</p>
+                        <div class="achievement-item">
+                            Gerenciamento completo de serviços AWS via Console, incluindo provisionamento de instâncias EC2 e configuração de buckets S3
+                        </div>
+                        <div class="achievement-item">
+                            Desenvolvimento de funções Lambda para processamento assíncrono e automação de tarefas
+                        </div>
+                        <div class="achievement-item">
+                            Implementação de filas SQS para comunicação entre microsserviços
+                        </div>
+                        <div class="achievement-item">
+                            Configuração de políticas IAM para controle de acesso e segurança
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Development Section -->
+            <section class="experience-section">
+                <h2 class="section-title">Desenvolvimento de APIs</h2>
+
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Integração API REST</h3>
+                        <span class="card-period">Linx</span>
+                    </div>
+                    
+                    <p class="card-description">
+                        Desenvolvimento e integração de APIs RESTful para comunicação entre sistemas de varejo, 
+                        garantindo escalabilidade e performance nas operações.
+                    </p>
+
+                    <div class="tech-list">
+                        <span class="tech-tag">API REST</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">JSON</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+
+                    <div class="achievements">
+                        <p class="achievements-title">Principais Realizações:</p>
+                        <div class="achievement-item">
+                            Criação de endpoints RESTful para integração com sistemas de varejo
+                        </div>
+                        <div class="achievement-item">
+                            Implementação de autenticação e autorização em APIs
+                        </div>
+                        <div class="achievement-item">
+                            Otimização de queries SQL para melhor performance
+                        </div>
+                        <div class="achievement-item">
+                            Documentação técnica de APIs para equipes de desenvolvimento
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Processing Section -->
+            <section class="experience-section">
+                <h2 class="section-title">Processamento de Dados</h2>
+
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Manipulação de Dados</h3>
+                        <span class="card-period">Linx</span>
+                    </div>
+                    
+                    <p class="card-description">
+                        Desenvolvimento de scripts e aplicações para processamento e transformação de dados em diferentes formatos,
+                        garantindo integridade e qualidade nas operações de ETL.
+                    </p>
+
+                    <div class="tech-list">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">JSON</span>
+                        <span class="tech-tag">CSV</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+
+                    <div class="achievements">
+                        <p class="achievements-title">Principais Realizações:</p>
+                        <div class="achievement-item">
+                            Desenvolvimento de scripts Python para transformação de dados JSON e CSV
+                        </div>
+                        <div class="achievement-item">
+                            Automação de processos de importação e exportação de dados
+                        </div>
+                        <div class="achievement-item">
+                            Validação e limpeza de dados para garantir qualidade
+                        </div>
+                        <div class="achievement-item">
+                            Criação de pipelines de dados integrados com serviços AWS
+                        </div>
+                    </div>
+
+                    <div class="code-block">
+<span class="code-comment"># Exemplo de processamento de dados</span>
+import json
+import pandas as pd
+
+<span class="code-comment"># Leitura e transformação de dados</span>
+data = pd.read_csv('dados_varejo.csv')
+processed = data.to_json(orient='records')
+
+<span class="code-comment"># Upload para S3 via boto3</span>
+s3_client.put_object(
+    Bucket='linx-data',
+    Key='processed/data.json',
+    Body=processed
+)
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech Stack Summary -->
+            <section class="experience-section">
+                <h2 class="section-title">Stack Tecnológico</h2>
+                
+                <div class="experience-card">
+                    <div class="tech-list">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">JSON</span>
+                        <span class="tech-tag">CSV</span>
+                        <span class="tech-tag">AWS EC2</span>
+                        <span class="tech-tag">AWS S3</span>
+                        <span class="tech-tag">AWS Lambda</span>
+                        <span class="tech-tag">AWS SQS</span>
+                        <span class="tech-tag">AWS IAM</span>
+                        <span class="tech-tag">API REST</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Boto3</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p><a href="index.html">← Voltar para Home</a></p>
+            <p>~/copyright © 2025 | developed by <strong>Wesley Mical</strong></p>
+            <p>// todos os direitos reservados</p>
+        </footer>
+    </body>
+</html>

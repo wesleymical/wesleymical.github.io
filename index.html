@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html style="font-size: 14px;font-family: Roboto, Arial, sans-serif;" lang="pt-BR" data-theme="dark" >
     <head>
-        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <title>Mago Supremo</title>
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
             body {
                 background-image: url("imagens/galaxy.jpg");
                 background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
                 color: white;
                 text-align: center;
-                margin: 4em auto 0em;
-                width: 100%; 
-                object-position: center;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                padding: 2em 1em;
+            }
+
+            #container {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 1em;
+            }
+
+            .nome {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+                margin-bottom: 1em;
+                padding: 0 1em;
+            }
+
+            h2 {
+                font-size: clamp(1rem, 2.5vw, 1.5rem);
+                word-break: break-word;
+                padding: 0 1em;
             }
 
             .l_ecrd_webicon_module_wrapper {
-                object-position: center;
-                margin: 4em auto 6em;
+                margin: 2em auto;
             }
 
             .sp-webicons28_INST {
@@ -26,22 +61,89 @@
             }
 
             .sub_titulo {
-                margin: 3em auto 5em;
-                text-align: inherit;
-                width: 70%;
+                margin: 2em auto;
+                width: 100%;
+                max-width: 800px;
+                padding: 0 1em;
             }
 
-            @media(min-width: 200px) and (max-width: 420px) {
-                .sub_titulo {
-                    margin: 3em 15em 5em 0em;
-                    text-align: center;
-                    width: 100%;
-                }
+            #contato {
+                margin-bottom: 0.5em;
             }
 
             .teste_cont {
-                margin: 4em auto 4em;
-                width: 320px;
+                margin: 3em auto;
+                width: 100%;
+                max-width: 320px;
+                padding: 0 1em;
+                display: flex;
+                justify-content: center;
+            }
+
+            .badge-base {
+                width: 100% !important;
+                max-width: 320px;
+            }
+
+            footer {
+                margin-top: auto;
+                padding: 2em 1em;
+                width: 100%;
+            }
+
+            footer p {
+                font-size: clamp(0.8rem, 2vw, 1rem);
+                margin: 0.5em 0;
+            }
+
+            /* Tablets */
+            @media (min-width: 768px) {
+                body {
+                    padding: 3em 2em;
+                }
+
+                .sub_titulo {
+                    width: 80%;
+                }
+
+                #container {
+                    padding: 2em;
+                }
+            }
+
+            /* Desktop */
+            @media (min-width: 1024px) {
+                body {
+                    padding: 4em 2em;
+                }
+
+                .sub_titulo {
+                    width: 70%;
+                }
+            }
+
+            /* Mobile pequeno */
+            @media (max-width: 480px) {
+                body {
+                    padding: 1em 0.5em;
+                }
+
+                h1 {
+                    padding: 0 0.5em;
+                }
+
+                h2 {
+                    padding: 0 0.5em;
+                    font-size: 0.9rem;
+                }
+
+                .teste_cont {
+                    margin: 2em auto;
+                }
+
+                footer {
+                    padding: 1.5em 0.5em;
+                }
             }
             
         </style>

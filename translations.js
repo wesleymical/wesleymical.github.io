@@ -134,8 +134,8 @@ const translations = {
     'en': {
         // Home Page
         home: {
-            title: 'Supreme Wizard',
-            subtitle: 'Systems and Consulting',
+            title: 'Mago Supremo',
+            subtitle: 'Sistemas e Consultoria',
             connect: 'Connect',
             email: 'wesley.msantos@parceiroslinx.com.br',
             footer1: '~/copyright © 2025 | developed by',

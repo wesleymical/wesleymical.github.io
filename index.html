@@ -8,6 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+        <script src="translations.js"></script>
         <style>
             * {
                 margin: 0;
@@ -393,10 +394,232 @@
                     padding: 2em 1em;
                 }
             }
+
+            /* Language Selector */
+            #language-selector {
+                position: fixed;
+                top: 1.5em;
+                left: 1.5em;
+                z-index: 1000;
+                display: flex;
+                gap: 0.5em;
+                background: var(--card-bg);
+                backdrop-filter: blur(10px);
+                border: 2px solid var(--card-border);
+                border-radius: 8px;
+                padding: 0.5em;
+                box-shadow: var(--shadow);
+            }
+
+            .lang-btn {
+                font-family: 'Fira Code', monospace;
+                background: transparent;
+                border: 1px solid var(--card-border);
+                color: var(--text-secondary);
+                padding: 0.5em 1em;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: 0.85rem;
+                font-weight: 500;
+            }
+
+            .lang-btn:hover {
+                color: var(--primary-color);
+                border-color: var(--primary-color);
+                box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            }
+
+            .lang-btn.active {
+                background: rgba(0, 255, 136, 0.2);
+                color: var(--primary-color);
+                border-color: var(--primary-color);
+                box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+            }
+
+            /* LinkedIn Card */
+            .linkedin-card {
+                background: var(--card-bg);
+                backdrop-filter: blur(10px);
+                border: 2px solid rgba(0, 119, 181, 0.4);
+                border-radius: 16px;
+                padding: 2em;
+                margin: 2em auto;
+                max-width: 600px;
+                box-shadow: 0 0 20px rgba(0, 119, 181, 0.2);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .linkedin-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #0077b5, transparent);
+                animation: scan 4s infinite;
+            }
+
+            .linkedin-card:hover {
+                transform: translateY(-5px);
+                border-color: #0077b5;
+                box-shadow: 0 0 30px rgba(0, 119, 181, 0.4);
+            }
+
+            .linkedin-header {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+                margin-bottom: 1em;
+            }
+
+            .linkedin-icon {
+                width: 50px;
+                height: 50px;
+                background: #0077b5;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+                color: white;
+                flex-shrink: 0;
+            }
+
+            .linkedin-info h3 {
+                font-size: 1.3rem;
+                color: var(--text-neon);
+                margin-bottom: 0.2em;
+            }
+
+            .linkedin-info p {
+                color: var(--text-secondary);
+                font-size: 0.9rem;
+            }
+
+            .linkedin-link {
+                display: inline-block;
+                margin-top: 1em;
+                padding: 0.8em 1.5em;
+                background: linear-gradient(135deg, #0077b5, #005885);
+                color: white;
+                text-decoration: none;
+                border-radius: 8px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
+            }
+
+            .linkedin-link:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(0, 119, 181, 0.5);
+            }
+
+            /* Main Navigation */
+            .main-nav {
+                position: absolute;
+                top: 2em;
+                right: 2em;
+                z-index: 100;
+                display: flex;
+                gap: 1em;
+                flex-wrap: wrap;
+            }
+
+            .main-nav-link {
+                font-family: 'Fira Code', monospace;
+                color: var(--primary-color);
+                text-decoration: none;
+                padding: 0.6em 1.2em;
+                background: var(--card-bg);
+                border: 2px solid var(--card-border);
+                border-radius: 8px;
+                backdrop-filter: blur(10px);
+                transition: all 0.3s ease;
+                display: inline-block;
+                font-size: 0.85rem;
+            }
+
+            .main-nav-link:hover {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+            }
+
+            /* Mobile Responsive Adjustments */
+            @media (max-width: 768px) {
+                #language-selector {
+                    top: 1em;
+                    left: 1em;
+                    padding: 0.4em;
+                }
+
+                .lang-btn {
+                    padding: 0.4em 0.8em;
+                    font-size: 0.75rem;
+                }
+
+                .main-nav {
+                    position: relative;
+                    top: auto;
+                    right: auto;
+                    justify-content: center;
+                    margin: 1em auto 2em;
+                    width: 100%;
+                    padding: 0 1em;
+                }
+
+                .main-nav-link {
+                    flex: 1;
+                    text-align: center;
+                    min-width: 80px;
+                }
+
+                #container {
+                    margin-top: 0;
+                }
+
+                .linkedin-header {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .linkedin-icon {
+                    margin: 0 auto;
+                }
+            }
+
+            @media (max-width: 480px) {
+                #language-selector {
+                    top: 0.8em;
+                    left: 0.8em;
+                    padding: 0.3em;
+                }
+
+                .lang-btn {
+                    padding: 0.3em 0.6em;
+                    font-size: 0.7rem;
+                }
+
+                .main-nav {
+                    gap: 0.5em;
+                    margin: 0.5em auto 1.5em;
+                }
+
+                .main-nav-link {
+                    padding: 0.5em 0.8em;
+                    font-size: 0.75rem;
+                }
+            }
             
         </style>
     </head>
     <body>
+        <!-- Language Selector -->
+        <div id="language-selector"></div>
+
         <!-- Partículas flutuantes -->
         <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
         <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
@@ -409,16 +632,22 @@
         <div class="particle" style="left: 90%; animation-delay: 2.5s;"></div>
         
         <!-- Navigation -->
-        <nav style="position: absolute; top: 2em; right: 2em; z-index: 100;">
-            <a href="experiencia.html" style="font-family: 'Fira Code', monospace; color: var(--primary-color); text-decoration: none; padding: 0.6em 1.2em; background: var(--card-bg); border: 2px solid var(--card-border); border-radius: 8px; backdrop-filter: blur(10px); transition: all 0.3s ease; display: inline-block;">
-                Experiência →
+        <nav class="main-nav">
+            <a href="desenvolvedor.html" class="main-nav-link">
+                Dev
+            </a>
+            <a href="consultor.html" class="main-nav-link">
+                Consultor
+            </a>
+            <a href="lsp.html" class="main-nav-link">
+                LSP
             </a>
         </nav>
         
         <div id="container">
             <div class="nome">
-                <h1 class="hero-title">Mago Supremo</h1>
-                <p class="company-name">Sistemas e Consultoria</p>
+                <h1 class="hero-title" data-i18n="home.title">Mago Supremo</h1>
+                <p class="company-name" data-i18n="home.subtitle">Sistemas e Consultoria</p>
                 
                 <div class="tech-stack">
                     <span class="tech-badge">Python</span>
@@ -437,10 +666,24 @@
                 </div>
                 
                 <div class="divider"></div>
+
+                <!-- LinkedIn Card -->
+                <div class="linkedin-card">
+                    <div class="linkedin-header">
+                        <div class="linkedin-icon">in</div>
+                        <div class="linkedin-info">
+                            <h3 data-i18n="home.linkedinTitle">Conecte-se no LinkedIn</h3>
+                            <p data-i18n="home.linkedinDesc">Desenvolvedor e Consultor especializado em soluções Linx para varejo</p>
+                        </div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/wesleymical/" target="_blank" class="linkedin-link" data-i18n="home.viewProfile">
+                        Ver Perfil Completo
+                    </a>
+                </div>
                 
                 <div class="contact-card">
-                    <h2 id="contato">Connect</h2>
-                    <a href="mailto:wesley.msantos@parceiroslinx.com.br" class="email-link">
+                    <h2 id="contato" data-i18n="home.connect">Connect</h2>
+                    <a href="mailto:wesley.msantos@parceiroslinx.com.br" class="email-link" data-i18n="home.email">
                         wesley.msantos@parceiroslinx.com.br
                     </a>
                 </div>
@@ -455,8 +698,8 @@
             </div>
         </div>    
         <footer>
-            <p>~/copyright © 2025 | developed by <strong>Wesley Mical</strong></p>
-            <p>// todos os direitos reservados</p>
+            <p><span data-i18n="home.footer1">~/copyright © 2025 | developed by</span> <strong>Wesley Mical</strong></p>
+            <p data-i18n="home.footer2">// todos os direitos reservados</p>
         </footer>
     </body>
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>

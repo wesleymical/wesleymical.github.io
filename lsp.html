@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="description" content="Experiências de Wesley Mical como LSP - Linx Solution Partner">
+        <title>LSP - Linx Solution Partner | Mago Supremo</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            :root {
+                --primary-color: #00ff88;
+                --primary-dark: #00cc6a;
+                --secondary-color: #00d4ff;
+                --accent-color: #ff00ff;
+                --text-primary: #e0e0e0;
+                --text-secondary: #a0a0a0;
+                --text-neon: #00ff88;
+                --bg-overlay: rgba(10, 10, 25, 0.92);
+                --card-bg: rgba(20, 20, 40, 0.7);
+                --card-border: rgba(0, 255, 136, 0.3);
+                --shadow: 0 0 20px rgba(0, 255, 136, 0.2), 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background: linear-gradient(135deg, var(--bg-overlay), var(--bg-overlay)), url("imagens/galaxy.jpg");
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                color: var(--text-primary);
+                min-height: 100vh;
+                line-height: 1.6;
+                position: relative;
+            }
+
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: 
+                    repeating-linear-gradient(
+                        0deg,
+                        transparent,
+                        transparent 2px,
+                        rgba(0, 255, 136, 0.03) 2px,
+                        rgba(0, 255, 136, 0.03) 4px
+                    );
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2em 1.5em;
+                position: relative;
+                z-index: 2;
+            }
+
+            .nav-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 3em;
+                padding: 1.5em;
+                background: var(--card-bg);
+                backdrop-filter: blur(10px);
+                border: 2px solid var(--card-border);
+                border-radius: 12px;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-logo {
+                font-family: 'Fira Code', monospace;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                text-decoration: none;
+                text-shadow: 0 0 10px var(--primary-color);
+            }
+
+            .nav-logo::before {
+                content: '< ';
+                color: var(--secondary-color);
+            }
+
+            .nav-logo::after {
+                content: ' />';
+                color: var(--secondary-color);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1.5em;
+            }
+
+            .nav-link {
+                font-family: 'Fira Code', monospace;
+                color: var(--text-secondary);
+                text-decoration: none;
+                padding: 0.5em 1em;
+                border: 1px solid transparent;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+                font-size: 0.9rem;
+            }
+
+            .nav-link:hover, .nav-link.active {
+                color: var(--primary-color);
+                border-color: var(--primary-color);
+                box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            }
+
+            .page-title {
+                font-family: 'Fira Code', monospace;
+                font-size: clamp(2rem, 5vw, 3rem);
+                font-weight: 700;
+                margin-bottom: 0.5em;
+                color: var(--primary-color);
+                text-shadow: 0 0 10px var(--primary-color);
+                text-align: center;
+            }
+
+            .page-title::before {
+                content: '// ';
+                color: var(--secondary-color);
+            }
+
+            .page-subtitle {
+                font-size: clamp(1rem, 2.5vw, 1.3rem);
+                color: var(--text-secondary);
+                text-align: center;
+                margin-bottom: 3em;
+            }
+
+            .highlight-badge {
+                display: inline-block;
+                font-family: 'Fira Code', monospace;
+                font-size: 0.9rem;
+                padding: 0.5em 1.2em;
+                background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 212, 255, 0.2));
+                border: 2px solid var(--primary-color);
+                border-radius: 8px;
+                color: var(--primary-color);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin: 1em auto 2em;
+                box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            }
+
+            .experience-section {
+                margin-bottom: 3em;
+            }
+
+            .section-title {
+                font-family: 'Fira Code', monospace;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--secondary-color);
+                margin-bottom: 1.5em;
+                padding-bottom: 0.5em;
+                border-bottom: 2px solid var(--card-border);
+            }
+
+            .section-title::before {
+                content: '{ ';
+                color: var(--primary-color);
+            }
+
+            .section-title::after {
+                content: ' }';
+                color: var(--primary-color);
+            }
+
+            .experience-card {
+                background: var(--card-bg);
+                backdrop-filter: blur(10px);
+                border: 2px solid var(--card-border);
+                border-radius: 12px;
+                padding: 2em;
+                margin-bottom: 2em;
+                box-shadow: var(--shadow);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .experience-card.featured {
+                border-color: var(--accent-color);
+                box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+            }
+
+            .experience-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+                animation: scan 4s infinite;
+            }
+
+            @keyframes scan {
+                0% { left: -100%; }
+                100% { left: 100%; }
+            }
+
+            .experience-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--primary-color);
+                box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+            }
+
+            .card-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 1em;
+                flex-wrap: wrap;
+                gap: 1em;
+            }
+
+            .card-title {
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: var(--text-neon);
+            }
+
+            .card-period {
+                font-family: 'Fira Code', monospace;
+                font-size: 0.9rem;
+                color: var(--text-secondary);
+                padding: 0.3em 0.8em;
+                background: rgba(0, 255, 136, 0.1);
+                border: 1px solid var(--primary-color);
+                border-radius: 6px;
+            }
+
+            .card-description {
+                color: var(--text-secondary);
+                margin-bottom: 1.5em;
+                line-height: 1.8;
+            }
+
+            .tech-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5em;
+                margin-bottom: 1.5em;
+            }
+
+            .tech-tag {
+                font-family: 'Fira Code', monospace;
+                font-size: 0.75rem;
+                padding: 0.4em 0.8em;
+                background: rgba(0, 212, 255, 0.1);
+                border: 1px solid var(--secondary-color);
+                border-radius: 6px;
+                color: var(--secondary-color);
+            }
+
+            .tech-tag.product {
+                background: rgba(255, 0, 255, 0.1);
+                border-color: var(--accent-color);
+                color: var(--accent-color);
+            }
+
+            .achievements {
+                margin-top: 1.5em;
+            }
+
+            .achievements-title {
+                font-family: 'Fira Code', monospace;
+                font-size: 0.9rem;
+                color: var(--primary-color);
+                margin-bottom: 0.8em;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .achievements-title::before {
+                content: '> ';
+            }
+
+            .achievement-item {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 0.8em;
+                color: var(--text-secondary);
+            }
+
+            .achievement-item::before {
+                content: '✓';
+                color: var(--primary-color);
+                margin-right: 0.8em;
+                font-weight: bold;
+                flex-shrink: 0;
+            }
+
+            footer {
+                margin-top: 4em;
+                padding: 2em 1em;
+                text-align: center;
+                background: rgba(10, 10, 25, 0.8);
+                backdrop-filter: blur(10px);
+                border-top: 2px solid var(--card-border);
+            }
+
+            footer p {
+                font-family: 'Fira Code', monospace;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+                margin: 0.4em 0;
+            }
+
+            footer a {
+                color: var(--primary-color);
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            footer a:hover {
+                text-shadow: 0 0 10px var(--primary-color);
+            }
+
+            @media (max-width: 768px) {
+                .nav-header {
+                    flex-direction: column;
+                    gap: 1em;
+                    text-align: center;
+                }
+
+                .nav-links {
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 0.5em;
+                }
+
+                .nav-link {
+                    width: 100%;
+                }
+
+                .card-header {
+                    flex-direction: column;
+                }
+
+                .experience-card {
+                    padding: 1.5em;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .container {
+                    padding: 1em;
+                }
+
+                .page-title {
+                    font-size: 1.8rem;
+                }
+
+                .card-title {
+                    font-size: 1.2rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Navigation -->
+            <nav class="nav-header">
+                <a href="index.html" class="nav-logo">Mago Supremo</a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="desenvolvedor.html" class="nav-link">Desenvolvedor</a>
+                    <a href="consultor.html" class="nav-link">Consultor</a>
+                    <a href="lsp.html" class="nav-link active">LSP</a>
+                </div>
+            </nav>
+
+            <!-- Page Header -->
+            <h1 class="page-title">Linx Solution Partner</h1>
+            <p class="page-subtitle">Consultoria Especializada e Projetos de Alta Complexidade</p>
+            <div style="text-align: center;">
+                <span class="highlight-badge">Experiência Recente</span>
+            </div>
+
+            <!-- H&M Project -->
+            <section class="experience-section">
+                <h2 class="section-title">Projeto H&M Brasil</h2>
+
+                <div class="experience-card featured">
+                    <div class="card-header">
+                        <h3 class="card-title">Implantação H&M</h3>
+                        <span class="card-period">LSP Linx</span>
+                    </div>
+                    
+                    <p class="card-description">
+                        Consultoria especializada na implantação dos sistemas Linx para a H&M no mercado brasileiro,
+                        um dos maiores projetos de varejo de moda do país, coordenando equipes multidisciplinares e
+                        garantindo a entrega dentro dos prazos e padrões de qualidade exigidos.
+                    </p>
+
+                    <div class="tech-list">
+                        <span class="tech-tag product">Linx ERP</span>
+                        <span class="tech-tag product">Linx POS</span>
+                        <span class="tech-tag">Project Management</span>
+                        <span class="tech-tag">Retail Fashion</span>
+                        <span class="tech-tag">International Standards</span>
+                    </div>
+
+                    <div class="achievements">
+                        <p class="achievements-title">Principais Realizações:</p>
+                        <div class="achievement-item">
+                            Liderança técnica na implantação de sistemas Linx para operação da H&M no Brasil
+                        </div>
+                        <div class="achievement-item">
+                            Coordenação com equipes internacionais e adequação aos padrões globais da marca
+                        </div>
+                        <div class="achievement-item">
+                            Customização de processos para atender requisitos específicos do varejo de moda internacional
+                        </div>
+                        <div class="achievement-item">
+                            Garantia de integração perfeita entre todos os módulos e sistemas
+                        </div>
+                        <div class="achievement-item">
+                            Suporte estratégico durante fase de go-live e estabilização
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- New Products Pilot -->
+            <section class="experience-section">
+                <h2 class="section-title">Piloto de Novos Produtos Linx</h2>
+
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Conciliador Equals para Linx ERP</h3>
+                        <span class="card-period">LSP Linx</span>
+                    </div>
+                    
+                    <p class="card-description">
+                        Participação como piloto na implementação e homologação do Conciliador Equals integrado ao Linx ERP,
+                        sistema de conciliação financeira e bancária que automatiza processos de fechamento contábil.
+                    </p>
+
+                    <div class="tech-list">
+                        <span class="tech-tag product">Equals</span>
+                        <span class="tech-tag product">Linx ERP</span>
+                        <span class="tech-tag">Financial Reconciliation</span>
+                        <span class="tech-tag">Banking Integration</span>
+                        <span class="tech-tag">Pilot Testing</span>
+                    </div>
+
+                    <div class="achievements">
+                        <p class="achievements-title">Principais Realizações:</p>
+                        <div class="achievement-item">
+                            Validação de funcionalidades e processos de conciliação financeira
+                        </div>
+                        <div class="achievement-item">
+                            Testes de integração entre Equals e Linx ERP
+                        </div>
+                        <div class="achievement-item">
+                            Feedback técnico para evolução do produto
+                        </div>
+                        <div class="achievement-item">
+                            Documentação de casos de uso e melhores práticas
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 class="card-title">SmartPOS para Linx POS</h3>
+                        <span class="card-period">LSP Linx</span>
+                    </div>
+                    
+                    <p class="card-description">
+                        Piloto de nova solução de ponto de venda inteligente, testando funcionalidades avançadas
+                        de mobilidade, integração com pagamentos e experiência omnichannel.
+                    </p>
+
+                    <div class="tech-list">
+                        <span class="tech-tag product">SmartPOS</span>
+                        <span class="tech-tag product">Linx POS</span>
+                        <span class="tech-tag">Mobile Payment</span>
+                        <span class="tech-tag">Omnichannel</span>
+                        <span class="tech-tag">UX Testing</span>
+                    </div>
+
+                    <div class="achievements">
+                        <p class="achievements-title">Principais Realizações:</p>
+                        <div class="achievement-item">
+                            Validação de usabilidade e performance do SmartPOS
+                        </div>
+                        <div class="achievement-item">
+                            Testes de integração com diferentes meios de pagamento
+                        </div>
+                        <div class="achievement-item">
+                            Avaliação de funcionalidades omnichannel
+                        </div>
+                        <div class="achievement-item">
+                            Sugestões de melhorias baseadas em experiência de campo
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Linx OmniPOS</h3>
+                        <span class="card-period">LSP Linx</span>
+                    </div>
+                    
+                    <p class="card-description">
+                        Participação no piloto da solução OmniPOS, plataforma unificada para operações de venda
+                        física e digital, integrando múltiplos canais em uma única experiência.
+                    </p>
+
+                    <div class="tech-list">
+                        <span class="tech-tag product">Linx OmniPOS</span>
+                        <span class="tech-tag">Omnichannel</span>
+                        <span class="tech-tag">Unified Commerce</span>
+                        <span class="tech-tag">Cloud Platform</span>
+                        <span class="tech-tag">Innovation</span>
+                    </div>
+
+                    <div class="achievements">
+                        <p class="achievements-title">Principais Realizações:</p>
+                        <div class="achievement-item">
+                            Testes de funcionalidades omnichannel avançadas
+                        </div>
+                        <div class="achievement-item">
+                            Validação de integrações entre canais físico e digital
+                        </div>
+                        <div class="achievement-item">
+                            Análise de performance e escalabilidade da plataforma cloud
+                        </div>
+                        <div class="achievement-item">
+                            Contribuição para roadmap de evolução do produto
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LSP Consultancy -->
+            <section class="experience-section">
+                <h2 class="section-title">Consultoria LSP</h2>
+
+                <div class="experience-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Consultoria para Linx e Clientes</h3>
+                        <span class="card-period">LSP</span>
+                    </div>
+                    
+                    <p class="card-description">
+                        Atuação como consultor especializado oferecendo suporte técnico e estratégico tanto para a Linx
+                        quanto para seus clientes, com foco em projetos complexos e soluções inovadoras.
+                    </p>
+
+                    <div class="achievements">
+                        <p class="achievements-title">Principais Realizações:</p>
+                        <div class="achievement-item">
+                            Consultoria estratégica para clientes de alto valor da Linx
+                        </div>
+                        <div class="achievement-item">
+                            Suporte em projetos de transformação digital no varejo
+                        </div>
+                        <div class="achievement-item">
+                            Validação técnica de novas funcionalidades e produtos Linx
+                        </div>
+                        <div class="achievement-item">
+                            Treinamento e capacitação de equipes técnicas
+                        </div>
+                        <div class="achievement-item">
+                            Participação em definições de roadmap de produtos
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p><a href="index.html">← Voltar para Home</a></p>
+            <p>~/copyright © 2025 | developed by <strong>Wesley Mical</strong></p>
+            <p>// todos os direitos reservados</p>
+        </footer>
+    </body>
+</html>

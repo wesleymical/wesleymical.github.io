@@ -76,12 +76,11 @@ const translations = {
             processAch4: 'Documentação técnica e funcional das implantações realizadas',
             processAch5: 'Suporte pós-implantação e evolução contínua dos processos',
             portfolioTitle: 'Portfólio de Clientes',
-            portfolioDesc: 'Experiência em projetos de implantação para diversos segmentos do varejo, incluindo:',
+            portfolioDesc: 'Experiência em projetos de implantação para o segmento de varejo de moda, com foco em:',
             portfolio1: 'Moda e Vestuário',
-            portfolio2: 'Farmácias e Drogarias',
-            portfolio3: 'Supermercados e Alimentação',
-            portfolio4: 'Lojas de Departamento',
-            portfolio5: 'Varejo Especializado'
+            portfolio2: 'Lojas de Shopping Centers',
+            portfolio3: 'Lojas de Departamento',
+            portfolio4: 'Varejo de Moda Especializado'
         },
         // LSP Page
         lsp: {
@@ -207,12 +206,11 @@ const translations = {
             processAch4: 'Technical and functional documentation of implementations',
             processAch5: 'Post-implementation support and continuous process evolution',
             portfolioTitle: 'Client Portfolio',
-            portfolioDesc: 'Experience in implementation projects for various retail segments, including:',
+            portfolioDesc: 'Experience in implementation projects for fashion retail segment, focusing on:',
             portfolio1: 'Fashion and Apparel',
-            portfolio2: 'Pharmacies and Drugstores',
-            portfolio3: 'Supermarkets and Food',
-            portfolio4: 'Department Stores',
-            portfolio5: 'Specialized Retail'
+            portfolio2: 'Shopping Mall Stores',
+            portfolio3: 'Department Stores',
+            portfolio4: 'Specialized Fashion Retail'
         },
         // LSP Page
         lsp: {
